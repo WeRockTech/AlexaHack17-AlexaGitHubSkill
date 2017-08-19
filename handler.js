@@ -1,16 +1,38 @@
 'use strict';
+const https = require('https');
 
 module.exports.hello = (event, context, callback) => {
-  const response = {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless v1.0! Your function executed successfully!',
-      input: event,
-    }),
-  };
+    let request = {
+        host: 'api.github.com',
+        headers: {'user-agent': 'AlexaSkill/1.0'},
+        path: '/search/repositories?sort=stars&order=desc&q=created:>2017-08-18'
+    };
 
-  callback(null, response);
+    https.get(request, res => {
+        res.setEncoding('utf8');
+        let body = '';
+        res.on('data', data => {
+            body += data;
+        });
+        res.on('end', () => {
+            body = JSON.parse(body);
 
-  // Use this code if you don't use the http event with the LAMBDA-PROXY integration
-  // callback(null, { message: 'Go Serverless v1.0! Your function executed successfully!', event });
+            let size = 3;
+            let top = body.items.splice(0, size);
+
+            callback(null, {
+                version: '1.0',
+                response: {
+                    outputSpeech: {
+                        type: 'PlainText',
+                        text: `There are ${body.total_count} trending repositories. I have the top ${size}, they are: ${top.map((item) => {
+                            let name = item.full_name.split('/');
+                            return `${name[1]} by ${name[0]}. `
+                        })}`,
+                    },
+                    shouldEndSession: true,
+                },
+            });
+        });
+    });
 };
