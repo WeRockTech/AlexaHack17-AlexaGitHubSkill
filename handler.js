@@ -3,6 +3,7 @@ const https = require('https');
 const moment = require('moment');
 
 const yesterday = moment().subtract(1, 'day');
+const size = 5;
 
 module.exports.github = (event, context, callback) => {
     let request = {
@@ -20,7 +21,6 @@ module.exports.github = (event, context, callback) => {
         res.on('end', () => {
             body = JSON.parse(body);
 
-            let size = 3;
             let top = body.items.splice(0, size);
 
             callback(null, {
