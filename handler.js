@@ -1,11 +1,14 @@
 'use strict';
 const https = require('https');
+const moment = require('moment');
+
+const yesterday = moment().subtract(1, 'day');
 
 module.exports.hello = (event, context, callback) => {
     let request = {
         host: 'api.github.com',
         headers: {'user-agent': 'AlexaSkill/1.0'},
-        path: '/search/repositories?sort=stars&order=desc&q=created:>2017-08-18'
+        path: `/search/repositories?sort=stars&order=desc&q=created:>${yesterday.format('YYYY-MM-DD')}`
     };
 
     https.get(request, res => {
@@ -25,7 +28,7 @@ module.exports.hello = (event, context, callback) => {
                 response: {
                     outputSpeech: {
                         type: 'PlainText',
-                        text: `There are ${body.total_count} trending repositories. I have the top ${size}, they are: ${top.map((item) => {
+                        text: `There are ${body.total_count} trending repositories since, ${yesterday.format("dddd hA")}. I have the top ${size}, they are: ${top.map((item) => {
                             let name = item.full_name.split('/');
                             return `${name[1]} by ${name[0]}. `
                         })}`,

@@ -20,6 +20,7 @@ service: AlexaHack17-GitHubNews
 provider:
   name: aws
   runtime: nodejs6.10
+  profile: jaoudestudios
   region: eu-west-1
 
 # you can overwrite defaults here
