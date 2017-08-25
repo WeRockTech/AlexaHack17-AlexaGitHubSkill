@@ -4,7 +4,7 @@ const moment = require('moment');
 
 const yesterday = moment().subtract(1, 'day');
 
-module.exports.hello = (event, context, callback) => {
+module.exports.github = (event, context, callback) => {
     let request = {
         host: 'api.github.com',
         headers: {'user-agent': 'AlexaSkill/1.0'},
