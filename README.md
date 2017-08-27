@@ -2,6 +2,8 @@
 
 Alexa Skills to get GitHub information.
 
+Published on [Alexa Skills store](https://www.amazon.co.uk/dp/B075416397/ref=sr_1_1?s=digital-skills&ie=UTF8&qid=1503731483&sr=1-1&keywords=GitHub+news)
+
 ## Requirements
 
 - [Serverless](http://serverless.com) framework
@@ -14,3 +16,4 @@ Alexa Skills to get GitHub information.
 - serverless deploy -v
 - Setup the Alexa Skill
 - Alexa voice command `Alexa ask GitHub what is trending`, example response `There are 9039 trending repositories since, Thursday 5AM. I have the top 5, they are: ... .`
+
