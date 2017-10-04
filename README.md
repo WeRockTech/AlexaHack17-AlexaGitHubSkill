@@ -6,7 +6,7 @@ Published on [Alexa Skills store](https://www.amazon.co.uk/dp/B075416397/ref=sr_
 
 ## Team
 
-- [Kornelia](https://github.com/Unicornelia)
+- [Samantha Burke](https://github.com/notwaving)
 - [Bybreen Samuels](https://github.com/Bybreen)
 - [Eddie Jaoude](https://github.com/eddiejaoude)
 
@@ -22,4 +22,3 @@ Published on [Alexa Skills store](https://www.amazon.co.uk/dp/B075416397/ref=sr_
 - serverless deploy -v
 - Setup the Alexa Skill
 - Alexa voice command `Alexa ask GitHub what is trending`, example response `There are 9039 trending repositories since, Thursday 5AM. I have the top 5, they are: ... .`
-
